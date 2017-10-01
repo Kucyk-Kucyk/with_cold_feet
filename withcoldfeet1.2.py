@@ -3,6 +3,7 @@
 import os
 import winsound
 import msvcrt
+from msvcrt import getch
 import time
 from random import randint, choice
 
@@ -155,7 +156,7 @@ def title2():
     window[170:191] = '       F E E T       '
     window[194:215] = '                     '
     window[218:239] = '                     '
-    window[242:263] = '< press z to start > '
+    window[242:263] = '< press up to start >'
     window[266:287] = '                     '
     window[290:311] = '                     '
     print ''.join(window)
@@ -169,13 +170,13 @@ def title3():
     window[170:191] = '       F E E T       '
     window[194:215] = '                     '
     window[218:239] = '                     '
-    window[242:263] = '  press z to start   '
+    window[242:263] = '  press up to start  '
     window[266:287] = '                     '
     window[290:311] = '                     '
     print ''.join(window)
 
 t1 = list('Fed by the wind along')
-t2 = list('my cracked skin      ')
+t2 = list('my dark skin         ')
 t3 = list('the hungry orange    ')
 t4 = list('eats its way         ')
 t5 = list('down                 ')
@@ -426,6 +427,57 @@ def anim():
    titlex()
    os.system('cls')
 
+print
+print '~~~~~~~~~~~~~~~~~~~~~~~~~'
+print '      D I S P L A Y\n     S E T T I N G S\n'
+print '~~~~~~~~~~~~~~~~~~~~~~~~~'
+print
+print '- right click at the top   of this window on the\n  "Whith Cold Feet"\n  title.'
+print
+print '- click on Properties.'
+print
+print '- click on the Font tab.'
+print
+print '- in the Font section\n  select\n  "Raster Fonts".'
+print
+print '- in the size section\n  select 8 x 12.'
+print
+print '~~~~~~~~~~~~~~~~~~~~~~~~~'
+raw_input('Press Enter to continue')
+
+os.system('cls')
+print
+print '~~~~~~~~~~~~~~~~~~~~~~~~~'
+print '     C O N T R O L S\n'
+print '~~~~~~~~~~~~~~~~~~~~~~~~~'
+print
+print '- arrow keys to move.'
+print
+print '- stand next to an\n  element to take it.'
+print
+print '- stand next to a\n  container to drop\n  the element.'
+print
+print '~~~~~~~~~~~~~~~~~~~~~~~~~'
+raw_input('press Enter to continue')
+
+os.system('cls')
+print
+print '~~~~~~~~~~~~~~~~~~~~~~~~~'
+print '       S T O R Y\n'
+print '~~~~~~~~~~~~~~~~~~~~~~~~~'
+print
+print "- you're an Alchemist in\n  your lab."
+print
+print '- decypher the riddles\n  before time eats\n  though them.'
+print
+print '- find the missing\n  elements at the\n  mixing table.'
+print
+print "- enter the right\n  combinations at\n  the assembling table."
+print
+print '- try to crack all\n  the riddles before\n  you become an old Z.'
+print
+print '~~~~~~~~~~~~~~~~~~~~~~~~~'
+raw_input('press Enter to start.')
 
 anim()
 title0()
@@ -433,9 +485,10 @@ time.sleep(2.5)
 anim()
 title1()
 time.sleep(3)
-os.system('cls')
+
 
 while msvcrt.kbhit() == False:
+    os.system('cls')
     title2()
     time.sleep(1)
     os.system('cls')
@@ -470,10 +523,8 @@ while True :
     p = alp[az]
 
     if msvcrt.kbhit():
-        
-        choice(text)[randint(0,20)] = ' '
 
-        key = msvcrt.getch()
+        key = ord(getch())
 
         if assembly == answer1:
             inv = ' '
@@ -636,6 +687,8 @@ while True :
             kbcount = 0
             if az > 25:
                 az = 0
+        elif kbcount % 3 == 0:
+            choice(text)[randint(0,20)] = ' '
         elif az == 2 :
             if kbcount == 2:
                 os.system('cls')
@@ -722,10 +775,9 @@ while True :
                 print ''.join(lab)
                 print '  A door..'
                 time.sleep(2)
-                
 
             
-        if key == 'd':
+        if key == 77:
             lab[playerpos] = o
             playerpos = playerpos + 1
             if playerpos in obstacles:
@@ -801,7 +853,7 @@ while True :
                 print ''.join(lab)
                 print '  [%s]' % inv
         
-        elif key == 'q':
+        elif key == 75:
             lab[playerpos] = o
             playerpos = playerpos - 1
             if playerpos in obstacles:
@@ -869,7 +921,7 @@ while True :
                 print ''.join(lab)
                 print '  [%s]' % inv
     
-        elif key == 'z':
+        elif key == 72:
             lab[playerpos] = o
             playerpos = playerpos - vtab
             if playerpos in obstacles:
@@ -968,133 +1020,142 @@ while True :
                 print ''.join(lab)
                 print '  Assembling Table'
             elif playerpos == doorpos + vtab:
-                lab[playerpos] = p
-                os.system('cls')
-                riddle()
-                print
-                print ''.join(lab)
-                print '  Secrets..'
-                time.sleep(2)
-                os.system('cls')
-                p = o
-                lab[playerpos] = p
-                riddle()
-                print
-                print ''.join(lab)
-                print '  Buried secrets..'
-                time.sleep(2)
-                p = 'z'
-                dream[dreampos] = p
-                os.system('cls')
-                musicstop()
-                winsound.PlaySound("dreamsong.wav", winsound.SND_ASYNC)
-                print
-                print ''.join(dream)
-                print
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  All elements,'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  at last united..'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  But one is missing !'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  Unless..'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  The key ! Of course !'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  All these years,'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  it was just here.. '
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  Mankind,'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  mind and body,'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  the last element..'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  Now the puzzle,'
-                time.sleep(2)
-                os.system('cls')
-                print
-                print ''.join(dream)
-                print '  is complete.'
-                time.sleep(2)
-                dream[dreampos] = o
-                dreampos = 156
-                dream[dreampos] = 'z'
-                os.system('cls')
-                print
-                print ''.join(dream)
-                os.system('color 60')
-                time.sleep(0.5)
-                os.system('color 5A')
-                time.sleep(0.5)
-                os.system('color 3F')
-                time.sleep(0.5)
-                os.system('color E9')
-                time.sleep(0.5)
-                os.system('color D5')
-                time.sleep(0.5)
-                os.system('color 4B')
-                time.sleep(0.5)
-                os.system('color 8C')
-                time.sleep(0.5)
-                os.system('cls')
-                os.system('color 06')
-                time.sleep(2)
-                print 'Is this the end ?'
-                time.sleep(2)
-                os.system('cls')
-                print 'Is the search over ?'
-                time.sleep(2)
-                os.system('cls')
-                print 'Am I one ?'
-                time.sleep(2)
-                os.system('cls')
-                print 'Am I nothing ?'
-                time.sleep(2)
-                os.system('cls')
-                print 'This is the end..'
-                time.sleep(2)
-                os.system('cls')
-                print 'The universe has me now.'
-                time.sleep(2)
-                os.system('cls')
-                time.sleep(3)
-                break
+                if az == 25:
+                    lab[playerpos] = p
+                    os.system('cls')
+                    riddle()
+                    print
+                    print ''.join(lab)
+                    print '  Secrets..'
+                    time.sleep(2)
+                    os.system('cls')
+                    p = o
+                    lab[playerpos] = p
+                    riddle()
+                    print
+                    print ''.join(lab)
+                    print '  Buried secrets..'
+                    time.sleep(2)
+                    p = 'z'
+                    dream[dreampos] = p
+                    os.system('cls')
+                    musicstop()
+                    winsound.PlaySound("dreamsong.wav", winsound.SND_ASYNC)
+                    print
+                    print ''.join(dream)
+                    print
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  All elements,'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  at last united..'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  But one is missing !'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  Unless..'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  The key ! Of course !'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  All these years,'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  it was just here.. '
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  Mankind,'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  mind and body,'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  the last element..'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  Now the puzzle,'
+                    time.sleep(2)
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    print '  is complete.'
+                    time.sleep(2)
+                    dream[dreampos] = o
+                    dreampos = 156
+                    dream[dreampos] = 'z'
+                    os.system('cls')
+                    print
+                    print ''.join(dream)
+                    os.system('color 60')
+                    time.sleep(0.5)
+                    os.system('color 5A')
+                    time.sleep(0.5)
+                    os.system('color 3F')
+                    time.sleep(0.5)
+                    os.system('color E9')
+                    time.sleep(0.5)
+                    os.system('color D5')
+                    time.sleep(0.5)
+                    os.system('color 4B')
+                    time.sleep(0.5)
+                    os.system('color 8C')
+                    time.sleep(0.5)
+                    os.system('cls')
+                    os.system('color 06')
+                    time.sleep(2)
+                    print 'Is this the end ?'
+                    time.sleep(2)
+                    os.system('cls')
+                    print 'Is the search over ?'
+                    time.sleep(2)
+                    os.system('cls')
+                    print 'Am I one ?'
+                    time.sleep(2)
+                    os.system('cls')
+                    print 'Am I nothing ?'
+                    time.sleep(2)
+                    os.system('cls')
+                    print 'This is the end..'
+                    time.sleep(2)
+                    os.system('cls')
+                    print 'The universe has me now.'
+                    time.sleep(2)
+                    os.system('cls')
+                    time.sleep(3)
+                    break
+                else:
+                    lab[playerpos] = p
+                    os.system('cls')
+                    riddle()
+                    print
+                    print ''.join(lab)
+                    print '  [%s]' % inv
+                    
             else:
                 lab[playerpos] = p
                 lab[hpos] = h
@@ -1105,7 +1166,7 @@ while True :
                 print ''.join(lab)
                 print '  [%s]' % inv
 
-        elif key == 's':
+        elif key == 80:
             lab[playerpos] = o
             playerpos = playerpos + vtab
             if playerpos in obstacles:
